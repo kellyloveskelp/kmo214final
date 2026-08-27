@@ -6,62 +6,21 @@ The goal of this challenge is to replicate Figure 3 of Schaefer et al. 2000, as 
 
 ## Data
 
-In the aforementioned figure, stream contents from four different sites were analyzed: three sites around Quebrada Cuenca and one in Rio Meyes, Puente Roto. Each site corresponds to the following assigned variable.
+Figure 3 of Schaefer et al. 2000, visuallizes stream contents from four different sites: three sites around Quebrada Cuenca and one in Rio Meyes, Puente Roto.
 
-cuenca1 = Quebrada Cuenca Site 1 (Q1) cuenca2 = Quebrada Cuenca Site 2 (Q2) cuenca3 = Quebrada Cuenca Site 3 (Q3) puente_roto = Rio Mameyes, Puente Roto (PRM)
-
-```{r}
-library(tidyverse)
-
-cuenca1 <- read_csv("../data/QuebradaCuenca1-Bisley.csv")
-cuenca2 <- read_csv("../data/QuebradaCuenca2-Bisley.csv")
-cuenca3 <- read_csv("../data/QuebradaCuenca3-Bisley.csv")
-puente_roto <- read_csv("../data/RioMameyesPuenteRoto.csv")
-```
-
-## Methods
-
-To process each dataset, I created a function called "moving-average". This function takes the mean concentration of each ion of interest (Nitrate(NO3-N), Ammonium (NH4-N), Potassium (K), Magnesium (Mg), and Calcium (Ca)) every nine weeks thoughout the sampling period. The function subsequently generates new datasets that start with "mov-avg" containing the nine-week average.
-
-```{r}
-# Source moving-average function
-source("../R/moving-average.R")
-
-# Apply function to each datset
-
-mov_avg_cuenca1 <- moving_average(cuenca1)
-mov_avg_cuenca2 <- moving_average(cuenca2)
-mov_avg_cuenca3 <- moving_average(cuenca3)
-mov_avg_roto <- moving_average(puente_roto)
-```
+To process each the data from each site, I created a function called "moving-average". This function takes the mean concentration of each ion of interest (Nitrate(NO3-N), Ammonium (NH4-N), Potassium (K), Magnesium (Mg), and Calcium (Ca)) at the site every nine weeks thoughout the sampling period. The function subsequently generates new datasets that start with "mov-avg" containing the nine-week average.
 
 To visuallize data from all four streams at the same time, I bind the datasets together and pivot the columns. This allows me to plot concentration over time for each ion of interest.
-
-```{r}
-# Now bind data
-bind_streams <- bind_rows(
-  mov_avg_cuenca1,
-  mov_avg_cuenca2,
-  mov_avg_cuenca3,
-  mov_avg_roto
-)
-
-# Pivot data in cuenca1 for visuallization
-pivot_streams <- bind_streams |>
-  pivot_longer(
-    cols = c(`NO3-N`, `NH4-N`, K, Mg, Ca),
-    names_to = "Ions",
-    values_to = "Concentration"
-  )
-```
 
 ## Results
 
 \[Insert results\]
 
 ```{r}
+all_streams_conc <- read_csv("output/clean_data.csv")
+
 ggplot(
-  data = pivot_streams,
+  data = all_streams_conc,
   mapping = aes(
     x = window_start,
     y = Concentration,

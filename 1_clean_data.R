@@ -32,4 +32,4 @@ pivot_streams <- bind_streams |>
   )
 
 # generates csv file as intermediate output
-all_streams_conc <- write_csv(pivot_streams, "output/clean_data.csv")
+write_csv(pivot_streams, "output/clean_data.csv")

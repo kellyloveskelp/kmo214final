@@ -17,22 +17,32 @@ To visuallize data from all four streams at the same time, I bind the datasets t
 \[Insert results\]
 
 ```{r}
-all_streams_conc <- read_csv("output/clean_data.csv")
+library(tidyverse)
+all_streams_conc <- read_csv(
+  "/Users/kellyanne/Desktop/meds2027/eds214/kmo214final/output/clean_data.csv"
+)
+
+hurricane_date <- as.Date("1989-09-18")
 
 ggplot(
   data = all_streams_conc,
   mapping = aes(
     x = window_start,
     y = Concentration,
-    color = Sample_ID
+    linetype = Sample_ID
   )
 ) +
   geom_line() +
+  geom_vline(
+    xintercept = hurricane_date,
+    linetype = "dashed",
+    linewidth = 0.4
+  ) +
   theme_classic() +
   labs(
     title = "Ion Concentration over Time",
-    x = "Sampling Dates",
-    y = "Concentration of Ion (mg/l)"
+    x = "Years",
+    y = "Concentration (mg/l)"
   ) +
   facet_wrap(~Ions, nrow = 5, ncol = 1, scales = "free")
 ```

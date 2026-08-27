@@ -3,8 +3,8 @@ moving_average <- function(dataset) {
   # Initialize a tibble to contain the results
   result <- tibble(
     window_start = seq(
-      ymd(dataset$Sample_Date[1]),
-      ymd(dataset$Sample_Date[nrow(dataset)]),
+      ymd("1988-01-01"),
+      ymd("1994-12-31"),
       by = "9 weeks"
     ),
     Sample_ID = NA,

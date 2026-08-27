@@ -2,14 +2,15 @@
 
 library(tidyverse)
 
+# source calling moving average function from R/ script
+source("R/moving-average.R")
+
 cuenca1 <- read_csv("data/QuebradaCuenca1-Bisley.csv")
 cuenca2 <- read_csv("data/QuebradaCuenca2-Bisley.csv")
 cuenca3 <- read_csv("data/QuebradaCuenca3-Bisley.csv")
 puente_roto <- read_csv("data/RioMameyesPuenteRoto.csv")
 
-# function creates 9-week averages for each ion
-source("R/moving-average.R")
-
+# 'moving_average()' function creates 9-week averages for each ion
 mov_avg_cuenca1 <- moving_average(cuenca1)
 mov_avg_cuenca2 <- moving_average(cuenca2)
 mov_avg_cuenca3 <- moving_average(cuenca3)

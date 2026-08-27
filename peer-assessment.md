@@ -24,7 +24,7 @@ Meets spec - The R folder houses the function that you used to find the 9-week m
 
 ## The repo has an effective README
 
-Not yet - The README is very close to being finished. You have already made notes on what else neeeds to be added so once those are fulfilled the README will be complete. Make sure the citations are consistent with each other and that you add contributing collaborators. The data and paper citation should be in the same reference header. 
+Not yet - The README is very close to being finished. You have already made notes on what else needs to be added, so once those are fulfilled the README will be complete. Make sure the citations are consistent with each other and that you add contributing collaborators. The data and paper citation should be in the same reference header. 
 
 ## Code follows a professional style
 

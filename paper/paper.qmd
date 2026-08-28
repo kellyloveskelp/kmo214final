@@ -46,13 +46,9 @@ There is a lack of data on ammonium (NH4-H) concentration in all four sites afte
 
 ```{r}
 library(tidyverse)
-source(
-  "/Users/kellyanne/Desktop/meds2027/eds214/kmo214final/R/ggplot_mytheme.R"
-)
+source("../R/ggplot_mytheme.R")
 
-all_streams_conc <- read_csv(
-  "/Users/kellyanne/Desktop/meds2027/eds214/kmo214final/output/clean_data.csv"
-)
+all_streams_conc <- read_csv("../output/clean_data.csv")
 
 hurricane_date <- as.Date("1989-09-18")
 

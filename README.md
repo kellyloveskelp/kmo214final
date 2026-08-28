@@ -1,4 +1,7 @@
-## EDS 214: Analytical Workflows and Scientific Reproducibility
+---
+title: EDS 214: Analytical Workflows and Scientific Reproducibility
+format: html
+---
 
 ### The Spaghetti Code Challenge
 
@@ -8,7 +11,7 @@
 
 This repository documents the analytical workflow to reproduce Figure 3 of Schaefer et al. 2000, as stated in the EDS 214 assignment goals. Figure 3 of this publication visualizes the concentration of five nutrients: NO3-N, NO4-N, Ca, K, and Mg in four different sample sites throughout Puerto Rico from May 1984 to December 2020.
 
-![Figure 3 of Schaefer et al. 2000](/Users/kellyanne/Desktop/meds2027/eds214/kmo214final/images/Figure 3.jpg)
+![Figure 3 of Schaefer et al. 2000](images/Figure 3.jpg)
 
 ### Contents
 
@@ -24,7 +27,7 @@ This repository documents the analytical workflow to reproduce Figure 3 of Schae
 
 ### Data Access
 
-All data used in this project is available in the [EDI Data Portal](https://portal.edirepository.org/nis/mapbrowse?packageid=knb-lter-luq.20.4923064){.uri} and can be downloaded as a .csv file(s).
+All data used in this project is available in the [EDI Data Portal](https://portal.edirepository.org/nis/mapbrowse?packageid=knb-lter-luq.20.4923064) and can be downloaded as a .csv file(s).
 
 #### Authors
 
@@ -32,9 +35,9 @@ Kelly Morgan, [\@kellyloveskelp](https://github.com/kellyloveskelp)
 
 #### Contributors
 
-Ethan Matthews. [\@ethan-matthews24](https://github.com/ethan-matthews24){.uri}
+Ethan Matthews. [\@ethan-matthews24](https://github.com/ethan-matthews24)
 
-Priscilla Pierce, [\@pr-scilla](https://github.com/pr-scilla){.uri}
+Priscilla Pierce, [\@pr-scilla](https://github.com/pr-scilla)
 
 #### References
 

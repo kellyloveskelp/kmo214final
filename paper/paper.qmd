@@ -46,9 +46,9 @@ There is a lack of data on ammonium (NH4-H) concentration in all four sites afte
 
 ```{r}
 library(tidyverse)
-source("../R/ggplot_mytheme.R")
+source("R/ggplot_mytheme.R")
 
-all_streams_conc <- read_csv("../output/clean_data.csv")
+all_streams_conc <- read_csv("output/clean_data.csv")
 
 hurricane_date <- as.Date("1989-09-18")
 
@@ -61,9 +61,7 @@ ggplot(
     color = Sample_ID
   )
 ) +
-  scale_color_discrete(
-    palette = my_palette
-  ) +
+  scale_color_discrete(palette = my_palette) +
   geom_line() +
   geom_vline(
     xintercept = hurricane_date,
@@ -74,14 +72,23 @@ ggplot(
   labs(
     title = "Ion Concentration over Time",
     x = "Years",
-    y = "Concentration (mg/l)"
+    y = NULL,
+    linetype = "Sample Site",
+    color = "Sample Site"
   ) +
   facet_wrap(
     ~Ions,
     nrow = 5,
     ncol = 1,
     scales = "free",
-    strip.position = "left"
+    strip.position = "left",
+    labeller = as_labeller(c(
+      `NO3-N` = "NO3-N ug/L",
+      `NH4-N` = "NH4-N ug/L",
+      K = "K ug/L",
+      Mg = "Mg ug/L",
+      Ca = "Ca ug/L"
+    ))
   ) +
   my_theme() # my theme package developed in /R
 ```

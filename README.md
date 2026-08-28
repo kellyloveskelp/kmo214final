@@ -3,17 +3,17 @@ title: EDS 214: Analytical Workflows and Scientific Reproducibility
 format: html
 ---
 
-### The Spaghetti Code Challenge
+## The Spaghetti Code Challenge
 
-#### *Aka, throw it in the script and see what sticks!*
+### *Aka, throw it in the script and see what sticks!*
 
-#### Introduction
+### Introduction
 
 This repository documents the analytical workflow to reproduce Figure 3 of Schaefer et al. 2000, as stated in the EDS 214 assignment goals. Figure 3 of this publication visualizes the concentration of five nutrients: NO3-N, NO4-N, Ca, K, and Mg in four different sample sites throughout Puerto Rico from May 1984 to December 2020.
 
 ![Figure 3 of Schaefer et al. 2000](images/Figure 3.jpg)
 
-### Contents
+## Contents
 
 | Directory or File Name | Description |
 |------------------------------------|------------------------------------|
@@ -25,21 +25,21 @@ This repository documents the analytical workflow to reproduce Figure 3 of Schae
 | images/ | This folder contains an image used in this README. |
 | docs/ | This folder contains the paper/ to pages connection. |
 
-### Data Access
+## Data Access
 
 All data used in this project is available in the [EDI Data Portal](https://portal.edirepository.org/nis/mapbrowse?packageid=knb-lter-luq.20.4923064) and can be downloaded as a .csv file(s).
 
-#### Authors
+### Authors
 
 Kelly Morgan, [\@kellyloveskelp](https://github.com/kellyloveskelp)
 
-#### Contributors
+### Contributors
 
 Ethan Matthews. [\@ethan-matthews24](https://github.com/ethan-matthews24)
 
 Priscilla Pierce, [\@pr-scilla](https://github.com/pr-scilla)
 
-#### References
+### References
 
 Scatena, F. N., & Larsen, M. C. (1991). Physical Aspects of Hurricane Hugo in Puerto Rico. Biotropica, 23(4), 317–323. https://doi.org/10.2307/2388247
 

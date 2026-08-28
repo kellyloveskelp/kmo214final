@@ -9,11 +9,11 @@ dark_teal <- "#092328"
 light_teal <- "#12544F"
 med_green <- "#2A835F"
 light_green <- "#8BBB92"
+
 light_grey <- "#999999"
 med_grey <- "#777777"
 dark_grey <- "#333333"
-
-my_palette <- c("#092328", "#12544F", "#2A835F", "#8BBB92")
+black <- "#000000"
 
 
 my_theme <- function() {

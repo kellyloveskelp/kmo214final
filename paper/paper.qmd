@@ -1,23 +1,55 @@
-# The Spaghetti Code Challenge
+# Replicating the Impacts of Hurricane Hugo on Streams in Puerto Rico
+
+![Hurricane Hugo's path over Puerto Rico.](https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Hurricane_Hugo%27s_path_in_the_Caribbean_%282023_colors%29.png/960px-Hurricane_Hugo%27s_path_in_the_Caribbean_%282023_colors%29.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail)
 
 ## Background
 
-The goal of this challenge is to replicate Figure 3 of Schaefer et al. 2000, as shown in README.md.
+The goal of this challenge is to replicate Figure 3 in the publication *Effects of hurricane disturbance on stream water concentrations and fluxes in eight tropical forest watersheds of the Luquillo Experimental Forest, Puerto Rico* by Schaefer et al. 2000, as shown in README.md.
+
+Figure 3 visualizes stream contents from four different sites around Puerto Rico: three sites in Quebrada Cuenca and one in Rio Meyes, Puente Roto. The sites are labeled in the figure as follows:
+
+- Q1 = Quebrada Cuenca Bisley, Site 1
+
+- Q2 = Quebrada Cuenca Bisley, Site 2
+
+- Q3 = Quebrada Cuenca Bisley, Site 3
+
+- PMR = Rio Meyes, Puente Roto
+
+The figure also visualizes the landfall of Hurricane Hugo in late September of 1989, which passed directly over Luquillo Experimental Forest ([Physical aspects of Hurricane Hugo in Puerto Rico, USGS](https://www.usgs.gov/publications/physical-aspects-hurricane-hugo-puerto-rico)).
 
 ## Data
 
-Figure 3 of Schaefer et al. 2000, visuallizes stream contents from four different sites: three sites around Quebrada Cuenca and one in Rio Meyes, Puente Roto.
+All data used in this project can be found in the [EDI Data Portal](https://portal.edirepository.org/nis/mapbrowse?packageid=knb-lter-luq.20.4923064){.uri}. This project specifically utilizes the following datasets as named on the site.
 
-To process each the data from each site, I created a function called "moving-average". This function takes the mean concentration of each ion of interest (Nitrate(NO3-N), Ammonium (NH4-N), Potassium (K), Magnesium (Mg), and Calcium (Ca)) at the site every nine weeks thoughout the sampling period. The function subsequently generates new datasets that start with "mov-avg" containing the nine-week average.
+- QuebradaCuenca1-Bisley.csv
 
-To visuallize data from all four streams at the same time, I bind the datasets together and pivot the columns. This allows me to plot concentration over time for each ion of interest.
+- QuebradaCuenca2-Bisley.csv
+
+- QuebradaCuenca3-Bisley.csv
+
+- RioMameyesPuenteRoto.csv
+
+## Methods
+
+To process the data from each site, I created a function called "moving-average". This function calculates the mean concentration of each ion of interest (Nitrate (NO3-N), Ammonium (NH4-N), Potassium (K), Magnesium (Mg), and Calcium (Ca)) at each site every nine weeks throughout the sampling period. The function generated new datasets that start with "mov-avg-" containing the nine-week average.
+
+To visualize data from all four streams at the same time, I bound the datasets together and pivoted the columns. This allowed me to plot concentration over time for each ion of interest.
 
 ## Results
 
-\[Insert results\]
+Ion concentration fluctuates over the six-year period from 1988 to 1994.
+
+There appears to be an impact on potassium (K) and Nntrate (NO3-N) corresponding to the hurricane occurrence on September 18th, 1989.
+
+There is a lack of data on ammonium (NH4-H) concentration in all four sites after late 1988.
 
 ```{r}
 library(tidyverse)
+source(
+  "/Users/kellyanne/Desktop/meds2027/eds214/kmo214final/R/ggplot_mytheme.R"
+)
+
 all_streams_conc <- read_csv(
   "/Users/kellyanne/Desktop/meds2027/eds214/kmo214final/output/clean_data.csv"
 )
@@ -29,20 +61,31 @@ ggplot(
   mapping = aes(
     x = window_start,
     y = Concentration,
-    linetype = Sample_ID
+    linetype = Sample_ID,
+    color = Sample_ID
   )
 ) +
+  scale_color_discrete(
+    palette = my_palette
+  ) +
   geom_line() +
   geom_vline(
     xintercept = hurricane_date,
     linetype = "dashed",
-    linewidth = 0.4
+    linewidth = 0.4,
+    color = "#db6666" #light red
   ) +
-  theme_classic() +
   labs(
     title = "Ion Concentration over Time",
     x = "Years",
     y = "Concentration (mg/l)"
   ) +
-  facet_wrap(~Ions, nrow = 5, ncol = 1, scales = "free")
+  facet_wrap(
+    ~Ions,
+    nrow = 5,
+    ncol = 1,
+    scales = "free",
+    strip.position = "left"
+  ) +
+  my_theme() # my theme package developed in /R
 ```
